@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<base href="<?php echo base_url(); ?>" />
 	<title>LOGIN SYSTEM | PPDB Online</title>
-	<link rel="icon" type="image/png" href="img/logo.png">
+	<link rel="icon" type="image/png" href="img/faviconn.png">
 	<!-- Global stylesheets -->
 	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css"> -->
 	<link href="assets/panel/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">

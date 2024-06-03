@@ -6,7 +6,7 @@ $user = $this->db->get('tbl_user')->row_array();
 <form action="" method="post">
 	<div class="panel panel-body login-form">
 		<div class="text-center">
-			<img src="img/logo.png" alt="Logo" width="80">
+			<img src="img/faviconn.png" alt="Logo" width="80">
 			<h5 class="content-group">LOGIN ADMIN PPDB Online<small class="display-block"><b><?php echo $user['nama_lengkap']; ?></b></small></h5>
 			<?php
 			echo $this->session->flashdata('msg');
