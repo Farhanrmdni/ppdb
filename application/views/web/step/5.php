@@ -42,14 +42,7 @@
       </div>
     </div>
 
-    <div class="form-group" style="padding-bottom:30px;">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">No Seri SKHUS <span class="text-danger">*</span></label>
-      <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
-        <input type="text" name="seri_skhus" class="form-control bg-blue class" maxlength="10" placeholder="No Seri SKHUS sebelumnya" data-parsley-group="block4" data-parsley-errors-container='div[id="error-seri_skhus"]'>
-        <i class="" style="margin-left:15px;"></i>
-        <div id="error-seri_skhus" style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
-      </div>
-    </div>
+   
 
    
     <div class="form-group" style="padding-bottom:30px;">

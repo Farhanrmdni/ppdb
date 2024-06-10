@@ -150,7 +150,7 @@
     <div class="form-group">
       <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Penghasilan Ibu <span class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
-        <select class="form-control bg-blue class" data-placeholder="Pilih Penghasilan Ayah" name="penghasilan_ibu" data-parsley-group="block3" data-parsley-errors-container='div[id="error-penghasilan_ibu"]' required>
+        <select class="form-control bg-blue class" data-placeholder="Pilih Penghasilan Ibu" name="penghasilan_ibu" data-parsley-group="block3" data-parsley-errors-container='div[id="error-penghasilan_ibu"]' required>
           <option value="">Pilih Penghasilan Ibu</option>
           <?php foreach ($v_penghasilan as $baris) : ?>
             <option value="<?php echo $baris->nama_penghasilan; ?>"><?php echo $baris->nama_penghasilan; ?></option>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2024 at 10:33 AM
+-- Generation Time: Jun 10, 2024 at 10:07 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -18,8 +18,454 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
+-- Database: `phpmyadmin`
+--
+CREATE DATABASE IF NOT EXISTS `phpmyadmin` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `phpmyadmin`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__bookmark`
+--
+
+CREATE TABLE `pma__bookmark` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `dbase` varchar(255) NOT NULL DEFAULT '',
+  `user` varchar(255) NOT NULL DEFAULT '',
+  `label` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `query` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Bookmarks';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__central_columns`
+--
+
+CREATE TABLE `pma__central_columns` (
+  `db_name` varchar(64) NOT NULL,
+  `col_name` varchar(64) NOT NULL,
+  `col_type` varchar(64) NOT NULL,
+  `col_length` text DEFAULT NULL,
+  `col_collation` varchar(64) NOT NULL,
+  `col_isNull` tinyint(1) NOT NULL,
+  `col_extra` varchar(255) DEFAULT '',
+  `col_default` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Central list of columns';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__column_info`
+--
+
+CREATE TABLE `pma__column_info` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `table_name` varchar(64) NOT NULL DEFAULT '',
+  `column_name` varchar(64) NOT NULL DEFAULT '',
+  `comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `mimetype` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `transformation` varchar(255) NOT NULL DEFAULT '',
+  `transformation_options` varchar(255) NOT NULL DEFAULT '',
+  `input_transformation` varchar(255) NOT NULL DEFAULT '',
+  `input_transformation_options` varchar(255) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Column information for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__designer_settings`
+--
+
+CREATE TABLE `pma__designer_settings` (
+  `username` varchar(64) NOT NULL,
+  `settings_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Settings related to Designer';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__export_templates`
+--
+
+CREATE TABLE `pma__export_templates` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `username` varchar(64) NOT NULL,
+  `export_type` varchar(10) NOT NULL,
+  `template_name` varchar(64) NOT NULL,
+  `template_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved export templates';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__favorite`
+--
+
+CREATE TABLE `pma__favorite` (
+  `username` varchar(64) NOT NULL,
+  `tables` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Favorite tables';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__history`
+--
+
+CREATE TABLE `pma__history` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `db` varchar(64) NOT NULL DEFAULT '',
+  `table` varchar(64) NOT NULL DEFAULT '',
+  `timevalue` timestamp NOT NULL DEFAULT current_timestamp(),
+  `sqlquery` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='SQL history for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__navigationhiding`
+--
+
+CREATE TABLE `pma__navigationhiding` (
+  `username` varchar(64) NOT NULL,
+  `item_name` varchar(64) NOT NULL,
+  `item_type` varchar(64) NOT NULL,
+  `db_name` varchar(64) NOT NULL,
+  `table_name` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Hidden items of navigation tree';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__pdf_pages`
+--
+
+CREATE TABLE `pma__pdf_pages` (
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `page_nr` int(10) UNSIGNED NOT NULL,
+  `page_descr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='PDF relation pages for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__recent`
+--
+
+CREATE TABLE `pma__recent` (
+  `username` varchar(64) NOT NULL,
+  `tables` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Recently accessed tables';
+
+--
+-- Dumping data for table `pma__recent`
+--
+
+INSERT INTO `pma__recent` (`username`, `tables`) VALUES
+('root', '[{\"db\":\"ppdb\",\"table\":\"tbl_siswa\"},{\"db\":\"ppdb\",\"table\":\"tbl_user\"}]');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__relation`
+--
+
+CREATE TABLE `pma__relation` (
+  `master_db` varchar(64) NOT NULL DEFAULT '',
+  `master_table` varchar(64) NOT NULL DEFAULT '',
+  `master_field` varchar(64) NOT NULL DEFAULT '',
+  `foreign_db` varchar(64) NOT NULL DEFAULT '',
+  `foreign_table` varchar(64) NOT NULL DEFAULT '',
+  `foreign_field` varchar(64) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Relation table';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__savedsearches`
+--
+
+CREATE TABLE `pma__savedsearches` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `search_name` varchar(64) NOT NULL DEFAULT '',
+  `search_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved searches';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__table_coords`
+--
+
+CREATE TABLE `pma__table_coords` (
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `table_name` varchar(64) NOT NULL DEFAULT '',
+  `pdf_page_number` int(11) NOT NULL DEFAULT 0,
+  `x` float UNSIGNED NOT NULL DEFAULT 0,
+  `y` float UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table coordinates for phpMyAdmin PDF output';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__table_info`
+--
+
+CREATE TABLE `pma__table_info` (
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `table_name` varchar(64) NOT NULL DEFAULT '',
+  `display_field` varchar(64) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table information for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__table_uiprefs`
+--
+
+CREATE TABLE `pma__table_uiprefs` (
+  `username` varchar(64) NOT NULL,
+  `db_name` varchar(64) NOT NULL,
+  `table_name` varchar(64) NOT NULL,
+  `prefs` text NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Tables'' UI preferences';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__tracking`
+--
+
+CREATE TABLE `pma__tracking` (
+  `db_name` varchar(64) NOT NULL,
+  `table_name` varchar(64) NOT NULL,
+  `version` int(10) UNSIGNED NOT NULL,
+  `date_created` datetime NOT NULL,
+  `date_updated` datetime NOT NULL,
+  `schema_snapshot` text NOT NULL,
+  `schema_sql` text DEFAULT NULL,
+  `data_sql` longtext DEFAULT NULL,
+  `tracking` set('UPDATE','REPLACE','INSERT','DELETE','TRUNCATE','CREATE DATABASE','ALTER DATABASE','DROP DATABASE','CREATE TABLE','ALTER TABLE','RENAME TABLE','DROP TABLE','CREATE INDEX','DROP INDEX','CREATE VIEW','ALTER VIEW','DROP VIEW') DEFAULT NULL,
+  `tracking_active` int(1) UNSIGNED NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Database changes tracking for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__userconfig`
+--
+
+CREATE TABLE `pma__userconfig` (
+  `username` varchar(64) NOT NULL,
+  `timevalue` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `config_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User preferences storage for phpMyAdmin';
+
+--
+-- Dumping data for table `pma__userconfig`
+--
+
+INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
+('root', '2024-06-02 07:28:32', '{\"Console\\/Mode\":\"collapse\"}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__usergroups`
+--
+
+CREATE TABLE `pma__usergroups` (
+  `usergroup` varchar(64) NOT NULL,
+  `tab` varchar(64) NOT NULL,
+  `allowed` enum('Y','N') NOT NULL DEFAULT 'N'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User groups with configured menu items';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__users`
+--
+
+CREATE TABLE `pma__users` (
+  `username` varchar(64) NOT NULL,
+  `usergroup` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Users and their assignments to user groups';
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `pma__bookmark`
+--
+ALTER TABLE `pma__bookmark`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pma__central_columns`
+--
+ALTER TABLE `pma__central_columns`
+  ADD PRIMARY KEY (`db_name`,`col_name`);
+
+--
+-- Indexes for table `pma__column_info`
+--
+ALTER TABLE `pma__column_info`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `db_name` (`db_name`,`table_name`,`column_name`);
+
+--
+-- Indexes for table `pma__designer_settings`
+--
+ALTER TABLE `pma__designer_settings`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pma__export_templates`
+--
+ALTER TABLE `pma__export_templates`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `u_user_type_template` (`username`,`export_type`,`template_name`);
+
+--
+-- Indexes for table `pma__favorite`
+--
+ALTER TABLE `pma__favorite`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pma__history`
+--
+ALTER TABLE `pma__history`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `username` (`username`,`db`,`table`,`timevalue`);
+
+--
+-- Indexes for table `pma__navigationhiding`
+--
+ALTER TABLE `pma__navigationhiding`
+  ADD PRIMARY KEY (`username`,`item_name`,`item_type`,`db_name`,`table_name`);
+
+--
+-- Indexes for table `pma__pdf_pages`
+--
+ALTER TABLE `pma__pdf_pages`
+  ADD PRIMARY KEY (`page_nr`),
+  ADD KEY `db_name` (`db_name`);
+
+--
+-- Indexes for table `pma__recent`
+--
+ALTER TABLE `pma__recent`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pma__relation`
+--
+ALTER TABLE `pma__relation`
+  ADD PRIMARY KEY (`master_db`,`master_table`,`master_field`),
+  ADD KEY `foreign_field` (`foreign_db`,`foreign_table`);
+
+--
+-- Indexes for table `pma__savedsearches`
+--
+ALTER TABLE `pma__savedsearches`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `u_savedsearches_username_dbname` (`username`,`db_name`,`search_name`);
+
+--
+-- Indexes for table `pma__table_coords`
+--
+ALTER TABLE `pma__table_coords`
+  ADD PRIMARY KEY (`db_name`,`table_name`,`pdf_page_number`);
+
+--
+-- Indexes for table `pma__table_info`
+--
+ALTER TABLE `pma__table_info`
+  ADD PRIMARY KEY (`db_name`,`table_name`);
+
+--
+-- Indexes for table `pma__table_uiprefs`
+--
+ALTER TABLE `pma__table_uiprefs`
+  ADD PRIMARY KEY (`username`,`db_name`,`table_name`);
+
+--
+-- Indexes for table `pma__tracking`
+--
+ALTER TABLE `pma__tracking`
+  ADD PRIMARY KEY (`db_name`,`table_name`,`version`);
+
+--
+-- Indexes for table `pma__userconfig`
+--
+ALTER TABLE `pma__userconfig`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pma__usergroups`
+--
+ALTER TABLE `pma__usergroups`
+  ADD PRIMARY KEY (`usergroup`,`tab`,`allowed`);
+
+--
+-- Indexes for table `pma__users`
+--
+ALTER TABLE `pma__users`
+  ADD PRIMARY KEY (`username`,`usergroup`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `pma__bookmark`
+--
+ALTER TABLE `pma__bookmark`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pma__column_info`
+--
+ALTER TABLE `pma__column_info`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pma__export_templates`
+--
+ALTER TABLE `pma__export_templates`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pma__history`
+--
+ALTER TABLE `pma__history`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pma__pdf_pages`
+--
+ALTER TABLE `pma__pdf_pages`
+  MODIFY `page_nr` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pma__savedsearches`
+--
+ALTER TABLE `pma__savedsearches`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- Database: `ppdb`
 --
+CREATE DATABASE IF NOT EXISTS `ppdb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `ppdb`;
 
 -- --------------------------------------------------------
 
@@ -143,7 +589,7 @@ CREATE TABLE `tbl_pengumuman` (
 --
 
 INSERT INTO `tbl_pengumuman` (`id_pengumuman`, `ket_pengumuman`, `tgl_pengumuman`) VALUES
-(1, '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>\r\n<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"line-height:normal\"><span style=\"font-family:Calibri,sans-serif\"><strong><u>Keterangan :</u></strong></span></span></span><br />\r\n<span style=\"font-size:11pt\"><span style=\"line-height:normal\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:10.0pt\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;1.&nbsp;Registrasi daftar ulang dilaksanakan pada tanggal 8 &ndash; 11 Juli 2021&nbsp;pukul 08.00 &ndash; 14.00.</span></span></span></span><br />\r\n<span style=\"font-size:11pt\"><span style=\"line-height:normal\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:10.0pt\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;2. Mencetak dan membawa Surat Pengumuman ini sebagai bukti&nbsp; lulus seleksi.</span></span></span></span><br />\r\n<span style=\"font-size:11pt\"><span style=\"line-height:normal\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:10.0pt\">&nbsp; &nbsp; &nbsp; &nbsp; 3.&nbsp;Membawa materi Rp. 6000,- sebanyak 2 lembar.</span></span></span></span></p>\r\n</body>\r\n</html>\r\n', '2021-04-14 00:00:00');
+(1, '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>\r\n<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"line-height:normal\"><span style=\"font-family:Calibri,sans-serif\"><strong><u>Keterangan :</u></strong></span></span></span><br />\r\n<span style=\"font-size:11pt\"><span style=\"line-height:normal\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:10.0pt\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;1.&nbsp;Registrasi daftar ulang dilaksanakan pada tanggal 8 &ndash; 11 Juli 2024&nbsp;pukul 08.00 &ndash; 14.00.</span></span></span></span><br />\r\n<span style=\"font-size:11pt\"><span style=\"line-height:normal\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:10.0pt\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;2. Mencetak dan membawa Surat Pengumuman ini sebagai bukti&nbsp; lulus seleksi.</span></span></span></span><br />\r\n<span style=\"font-size:11pt\"><span style=\"line-height:normal\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:10.0pt\">&nbsp; &nbsp; &nbsp; &nbsp; 3.&nbsp;Membawa materi Rp. 10.000,- sebanyak 2 lembar.</span></span></span></span></p>\r\n</body>\r\n</html>\r\n', '2021-04-14 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -220,20 +666,23 @@ CREATE TABLE `tbl_siswa` (
   `no_hp_ibu` varchar(14) DEFAULT NULL,
   `no_p_ujian` varchar(100) DEFAULT NULL,
   `seri_ijaza` varchar(100) DEFAULT NULL,
-  `seri_skhus` varchar(100) DEFAULT NULL
+  `seri_skhus` varchar(100) DEFAULT NULL,
+  `bukti_bayar` varchar(100) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_siswa`
 --
 
-INSERT INTO `tbl_siswa` (`id_siswa`, `no_pendaftaran`, `password`, `nis`, `nisn`, `nik`, `nama_lengkap`, `jk`, `tempat_lahir`, `tgl_lahir`, `agama`, `status_keluarga`, `anak_ke`, `jml_saudara`, `hobi`, `cita`, `paud`, `tk`, `alamat_siswa`, `jenis_tinggal`, `desa`, `kec`, `kab`, `prov`, `kode_pos`, `jarak`, `trans`, `no_hp_siswa`, `no_kk`, `kepala_keluarga`, `nama_ayah`, `nik_ayah`, `status_ayah`, `th_lahir_ayah`, `pdd_ayah`, `pekerjaan_ayah`, `penghasilan_ayah`, `nama_ibu`, `nik_ibu`, `status_ibu`, `th_lahir_ibu`, `pdd_ibu`, `pekerjaan_ibu`, `penghasilan_ibu`, `nama_wali`, `nik_wali`, `th_lahir_wali`, `pdd_wali`, `pekerjaan_wali`, `penghasilan_wali`, `no_hp_ortu`, `npsn_sekolah`, `nama_sekolah`, `status_sekolah`, `jenjang_sekolah`, `lokasi_sekolah`, `no_kks`, `no_pkh`, `no_kip`, `komp_ahli`, `tgl_siswa`, `status_verifikasi`, `status_pendaftaran`, `no_akte`, `no_hp_ayah`, `no_hp_ibu`, `no_p_ujian`, `seri_ijaza`, `seri_skhus`) VALUES
-(1, '2021-001', '1234567891', NULL, '1234567891', '3312136402000002', 'KIM NICOL JEFRI', 'Laki-Laki', 'Pontianak', '01-03-2008', 'Islam', 'Anak Kandung', '4', '4', '1', '4', '1', '1', 'JL. ANGGREK RT 01/04', '2', 'WONOKARTO', 'Wonogiri', 'wonogiri', 'JAWA TENGAH', '57651', '5', '5', '085320039001', '3312457845120002', 'YOYOK GUNAWAN', 'YOYOK GUNAWAN', '3312092410800003', '1', '1981', 'D1', 'Tidak Bekerja', '< 500rb', 'LUCIA WIWIK WINARNI', '3319036204730003', '1', '1986', 'D2', 'TNI/POLRI', '3jt-15t', '', '', '', '', '', '', '085320039001', '20339094', 'MIN SUKOHARJO', 'NEGERI', '1', '1', '-', '-', '-', 'MIPA', '2021-01-15 02:10:18', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL),
-(12, '2021-004', '0333145668', NULL, '0333145668', '03331456680333145668', 'DENI KURNIAWAN', 'Laki-Laki', 'Jakarta', '05-05-2005', 'Islam', 'Anak Kandung', '2', '4', '2', '1', '1', '2', 'Jakarta Utama RT 001 RW 002', '1', 'Bekasi', 'Mangaran', 'Tegal', 'DKI Jakarta', '0967', '2', '5', '08245678923', '0333145668033314', 'Hargianto', 'Hargianto', '0333145668033314', '1', '1980', 'D1', 'TNI/POLRI', '3jt-5t', 'Hartini', '0333145668033314', '1', '2009', 'S3', 'PNS', '2jt-3jt', '', '', '', '', '', '', '', '0333145668', 'MTs Negeri 1 Jakarta', 'NEGERI', '2', '1', '-', '-', '-', 'IPS', '2021-04-20 22:11:28', '0', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(11, '2021-003', '0011196508', NULL, '0011196508', '0011196508', 'ARIF RAHMAN HAKIM', 'Laki-Laki', 'SITUBONDO', '04-05-1994', 'Kristen', 'Anak Kandung', '1', '1', '3', '3', '1', '1', 'Situbondo', '1', 'Situbondo', 'Situbondo', 'Situbondo', 'Situbondo', '1', '5', '5', '081333561473', '0987654321', 'ARIF RAHMAN HAKIM', 'ARIF RAHMAN HAKIM', '111', '3', '33', 'D1', 'TNI/POLRI', '2jt-3jt', 'ARIF RAHMAN HAKIM', '1', '3', '1', 'D1', 'TNI/POLRI', '3jt-5t', '', '', '', '', '', '', '', '1', 'mts negeri 1 situbondo', 'NEGERI', '1', '1', '-', '-', '-', 'IPA', '2021-04-20 10:49:03', '0', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(8, '2021-002', '0011196508', NULL, '0011196590', '0011196508', 'IWAN PRAYITNO ILYAS', 'Laki-Laki', 'SITUBONDO', '05-05-1994', 'Islam', 'Anak Kandung', '2', '3', '1', '1', '2', '2', 'Situbondo', '1', 'Situbondo', 'Situbondo', 'Situbondo', 'Situbondo', 'Situbondo', '2', '4', '081333561473', '0987654321', 'ARIF RAHMAN HAKIM', 'ARIF RAHMAN HAKIM', 'ARIF RAHMAN HAKI', '1', 'ARIF RAHMA', 'SD/Sederajat', 'TNI/POLRI', '3jt-5t', 'ARIF RAHMAN HAKIM', '1', '1', 'ARIF RAHMA', 'D1', 'TNI/POLRI', '2jt-3jt', '', '', '', '', '', '', '', '1', 'mts negeri 1 situbondo', 'NEGERI', '2', '3', '-', '-', '-', 'IPA', '2021-04-18 21:07:00', '0', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(13, '2024-1716533858', '2132131', NULL, '2132131', '1111111111111111', 'han', 'Laki-Laki', 'Bekasi', '01-01-1990', 'Islam', 'Anak Kandung', '2', '3', NULL, NULL, NULL, NULL, 'asfasda', '1', 'sadasad', 'sadasad', 'sadasad', 'sadasad', '13000', '2', '4', '099888789', '1231231231', '123123123', 'sadasad', 'sadasad', '1', 'sadasad', 'S2', 'Pensiunan', '2jt-3jt', 'sadasad', 'sadasad', '1', 'sadasad', 'SD/Sederajat', 'TNI/POLRI', '500-1jt', '', '', '', '', '', '', '', '1231', 'SMA MANDALAHAYU', 'NEGERI', '1', '1', '1231', '23123', '-', 'IPA', '2024-05-24 09:00:42', NULL, 'lulus', '88888888889999', NULL, NULL, NULL, NULL, NULL),
-(14, '2024-1716537615', '2222222222', NULL, '2222222222', '1111111111111111', 'SMA Mandalahayu', 'Laki-Laki', 'Bekasi', '01-01-1990', 'Islam', 'Anak Kandung', '2', '3', NULL, NULL, NULL, NULL, 'asfasda', '1', 'sadasad', 'sadasad', 'sadasad', 'sadasad', '13000', '2', '4', '888888888888', '1231231231', NULL, 'sadasad', 'sadasad', '1', 'sadasad', 'SMA/Sederajat', 'PNS Selain (Guru dan Dokter/Bidan/Perawat)', '500-1jt', 'sadasad', 'sadasad', '1', 'sadasad', 'SD/Sederajat', 'PNS Selain (Guru dan Dokter/Bidan/Perawat)', '500-1jt', '', '', '', '', '', '', '', '1231', 'SMA MANDALAHAYU', 'SWASTA', '1', '2', '1231', '23123', NULL, 'IPA', '2024-05-24 10:03:03', NULL, 'tidak lulus', '88888888889999', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tbl_siswa` (`id_siswa`, `no_pendaftaran`, `password`, `nis`, `nisn`, `nik`, `nama_lengkap`, `jk`, `tempat_lahir`, `tgl_lahir`, `agama`, `status_keluarga`, `anak_ke`, `jml_saudara`, `hobi`, `cita`, `paud`, `tk`, `alamat_siswa`, `jenis_tinggal`, `desa`, `kec`, `kab`, `prov`, `kode_pos`, `jarak`, `trans`, `no_hp_siswa`, `no_kk`, `kepala_keluarga`, `nama_ayah`, `nik_ayah`, `status_ayah`, `th_lahir_ayah`, `pdd_ayah`, `pekerjaan_ayah`, `penghasilan_ayah`, `nama_ibu`, `nik_ibu`, `status_ibu`, `th_lahir_ibu`, `pdd_ibu`, `pekerjaan_ibu`, `penghasilan_ibu`, `nama_wali`, `nik_wali`, `th_lahir_wali`, `pdd_wali`, `pekerjaan_wali`, `penghasilan_wali`, `no_hp_ortu`, `npsn_sekolah`, `nama_sekolah`, `status_sekolah`, `jenjang_sekolah`, `lokasi_sekolah`, `no_kks`, `no_pkh`, `no_kip`, `komp_ahli`, `tgl_siswa`, `status_verifikasi`, `status_pendaftaran`, `no_akte`, `no_hp_ayah`, `no_hp_ibu`, `no_p_ujian`, `seri_ijaza`, `seri_skhus`, `bukti_bayar`) VALUES
+(1, '2021-001', '1234567891', NULL, '1234567891', '3312136402000002', 'KIM NICOL JEFRI', 'Laki-Laki', 'Pontianak', '01-03-2008', 'Islam', 'Anak Kandung', '4', '4', '1', '4', '1', '1', 'JL. ANGGREK RT 01/04', '2', 'WONOKARTO', 'Wonogiri', 'wonogiri', 'JAWA TENGAH', '57651', '5', '5', '085320039001', '3312457845120002', 'YOYOK GUNAWAN', 'YOYOK GUNAWAN', '3312092410800003', '1', '1981', 'D1', 'Tidak Bekerja', '< 500rb', 'LUCIA WIWIK WINARNI', '3319036204730003', '1', '1986', 'D2', 'TNI/POLRI', '3jt-15t', '', '', '', '', '', '', '085320039001', '20339094', 'MIN SUKOHARJO', 'NEGERI', '1', '1', '-', '-', '-', 'MIPA', '2021-01-15 02:10:18', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL),
+(12, '2021-004', '0333145668', NULL, '0333145668', '03331456680333145668', 'DENI KURNIAWAN', 'Laki-Laki', 'Jakarta', '05-05-2005', 'Islam', 'Anak Kandung', '2', '4', '2', '1', '1', '2', 'Jakarta Utama RT 001 RW 002', '1', 'Bekasi', 'Mangaran', 'Tegal', 'DKI Jakarta', '0967', '2', '5', '08245678923', '0333145668033314', 'Hargianto', 'Hargianto', '0333145668033314', '1', '1980', 'D1', 'TNI/POLRI', '3jt-5t', 'Hartini', '0333145668033314', '1', '2009', 'S3', 'PNS', '2jt-3jt', '', '', '', '', '', '', '', '0333145668', 'MTs Negeri 1 Jakarta', 'NEGERI', '2', '1', '-', '-', '-', 'IPS', '2021-04-20 22:11:28', '0', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL),
+(11, '2021-003', '0011196508', NULL, '0011196508', '0011196508', 'ARIF RAHMAN HAKIM', 'Laki-Laki', 'SITUBONDO', '04-05-1994', 'Kristen', 'Anak Kandung', '1', '1', '3', '3', '1', '1', 'Situbondo', '1', 'Situbondo', 'Situbondo', 'Situbondo', 'Situbondo', '1', '5', '5', '081333561473', '0987654321', 'ARIF RAHMAN HAKIM', 'ARIF RAHMAN HAKIM', '111', '3', '33', 'D1', 'TNI/POLRI', '2jt-3jt', 'ARIF RAHMAN HAKIM', '1', '3', '1', 'D1', 'TNI/POLRI', '3jt-5t', '', '', '', '', '', '', '', '1', 'mts negeri 1 situbondo', 'NEGERI', '1', '1', '-', '-', '-', 'IPA', '2021-04-20 10:49:03', '0', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL),
+(8, '2021-002', '0011196508', NULL, '0011196590', '0011196508', 'IWAN PRAYITNO ILYAS', 'Laki-Laki', 'SITUBONDO', '05-05-1994', 'Islam', 'Anak Kandung', '2', '3', '1', '1', '2', '2', 'Situbondo', '1', 'Situbondo', 'Situbondo', 'Situbondo', 'Situbondo', 'Situbondo', '2', '4', '081333561473', '0987654321', 'ARIF RAHMAN HAKIM', 'ARIF RAHMAN HAKIM', 'ARIF RAHMAN HAKI', '1', 'ARIF RAHMA', 'SD/Sederajat', 'TNI/POLRI', '3jt-5t', 'ARIF RAHMAN HAKIM', '1', '1', 'ARIF RAHMA', 'D1', 'TNI/POLRI', '2jt-3jt', '', '', '', '', '', '', '', '1', 'mts negeri 1 situbondo', 'NEGERI', '2', '3', '-', '-', '-', 'IPA', '2021-04-18 21:07:00', '0', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL),
+(13, '2024-1716533858', '2132131', NULL, '2132131', '1111111111111111', 'han', 'Laki-Laki', 'Bekasi', '01-01-1990', 'Islam', 'Anak Kandung', '2', '3', NULL, NULL, NULL, NULL, 'asfasda', '1', 'sadasad', 'sadasad', 'sadasad', 'sadasad', '13000', '2', '4', '099888789', '1231231231', '123123123', 'sadasad', 'sadasad', '1', 'sadasad', 'S2', 'Pensiunan', '2jt-3jt', 'sadasad', 'sadasad', '1', 'sadasad', 'SD/Sederajat', 'TNI/POLRI', '500-1jt', '', '', '', '', '', '', '', '1231', 'SMA MANDALAHAYU', 'NEGERI', '1', '1', '1231', '23123', '-', 'IPA', '2024-05-24 09:00:42', '1', 'lulus', '88888888889999', NULL, NULL, NULL, NULL, NULL, NULL),
+(14, '2024-1716537615', '2222222222', NULL, '2222222222', '1111111111111111', 'SMA Mandalahayu', 'Laki-Laki', 'Bekasi', '01-01-1990', 'Islam', 'Anak Kandung', '2', '3', NULL, NULL, NULL, NULL, 'asfasda', '1', 'sadasad', 'sadasad', 'sadasad', 'sadasad', '13000', '2', '4', '888888888888', '1231231231', NULL, 'sadasad', 'sadasad', '1', 'sadasad', 'SMA/Sederajat', 'PNS Selain (Guru dan Dokter/Bidan/Perawat)', '500-1jt', 'sadasad', 'sadasad', '1', 'sadasad', 'SD/Sederajat', 'PNS Selain (Guru dan Dokter/Bidan/Perawat)', '500-1jt', '', '', '', '', '', '', '', '1231', 'SMA MANDALAHAYU', 'SWASTA', '1', '2', '1231', '23123', NULL, 'IPA', '2024-05-24 10:03:03', '1', 'tidak lulus', '88888888889999', NULL, NULL, NULL, NULL, NULL, NULL),
+(15, '2024-1717483965', '2222222222', NULL, '2222222222', '23154125', 'farhan r', 'Laki-Laki', 'Bekasi', '01-01-1990', 'Islam', 'Anak Kandung', '2', '3', NULL, NULL, NULL, NULL, 'asfasda', '1', 'sadasad', 'sadasad', 'sadasad', 'sadasad', '13000', '4', '3', '55555555555555', '1231231231', NULL, 'sadasad', 'sadasad', NULL, 'sadasad', 'D1', 'PNS Selain (Guru dan Dokter/Bidan/Perawat)', '500-1jt', 'sadasad', 'sadasad', NULL, 'sadasad', 'SMA/Sederajat', 'PNS Selain (Guru dan Dokter/Bidan/Perawat)', '1jt-2jt', '', '', '', '', '', '', '', NULL, 'SMA MANDALAHAYU', NULL, NULL, NULL, '1231', '23123', NULL, 'IPA', '2024-06-04 08:57:31', NULL, NULL, '88888888889999', '66666666666', NULL, '234j3j42jb', '131jjjj///', 'ejjrj4r4r4', NULL),
+(16, '2024-1717484345', '9999999999', NULL, '9999999999', '1111111111111111', 'hahahah', 'Laki-Laki', 'Bekasi', '01-01-1990', 'Islam', 'Anak Kandung', '2', '3', NULL, NULL, NULL, NULL, 'asfasda', '1', 'sadasad', 'sadasad', 'sadasad', 'sadasad', '13000', '3', '3', '55555555555555', '1231231231', NULL, 'sadasad', 'sadasad', NULL, 'sadasad', 'D1', 'PNS Selain (Guru dan Dokter/Bidan/Perawat)', '2jt-3jt', 'sadasad', 'sadasad', NULL, 'sadasad', 'D1', 'Pensiunan', '2jt-3jt', '', '', '', '', '', '', '', NULL, 'SMA MANDALAHAYU', NULL, NULL, NULL, '1231', '23123', NULL, 'IPS', '2024-06-04 09:01:23', NULL, NULL, '88888888889999', '66666666666', NULL, '234j3j42jb', '131jjjj///', 'ejjrj4r4r4', NULL);
 
 -- --------------------------------------------------------
 
@@ -266,7 +715,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id_user`, `username`, `password`, `nama_lengkap`, `alamat`, `email`, `website`, `telp`, `kab_sekolah`, `ketua_panitia`, `nip_ketua`, `th_pelajaran`, `no_surat`, `kepsek`, `nip_kepsek`, `level`, `tgl_daftar`) VALUES
-(1, 'Mandalahayu', 'mandalahayu', 'SMA MANDALAHAYU', 'Jl. Margahayu No.46, RT.007/RW.017, Margahayu, Kec. Bekasi Tim., Kota Bks, Jawa Barat 17113', 'smandalahayu@gmail.com', 'www.smamandalahayu.com', '(123) 123-1234', 'Kota', 'Dra. Rahayu Ningtyas', '198909153007101112', '2023-2024', '001/MAN.11.12/KP.00.02/IV/2024', 'H.Supono,S.PD', '198909153007101112', 'admin', '2018-04-12 00:00:00');
+(1, 'Mandalahayu', 'mandalahayu', 'SMA MANDALAHAYU', 'Jl. Margahayu No.46, RT.007/RW.017, Margahayu, Kec. Bekasi Tim., Kota Bks, Jawa Barat 17113', 'smandalahayu@gmail.com', 'www.smamandalahayu.com', '(123) 123-1234', 'Kota', 'Dra. Rahayu Ningtyas', '198909153007101112', '2023-2024', '001/MDL.11.12/KP.00.02/IV/2024', 'H.Supono,S.PD', '198909153007101112', 'admin', '2018-04-12 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -305,7 +754,7 @@ CREATE TABLE `tbl_web` (
 --
 
 INSERT INTO `tbl_web` (`id_web`, `status_ppdb`, `tgl_diubah`) VALUES
-(1, 'buka', '2021-04-17 00:22:09');
+(1, 'buka', '2024-06-04 13:37:38');
 
 --
 -- Indexes for dumped tables
@@ -403,7 +852,7 @@ ALTER TABLE `tbl_pengumuman`
 -- AUTO_INCREMENT for table `tbl_siswa`
 --
 ALTER TABLE `tbl_siswa`
-  MODIFY `id_siswa` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_siswa` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
@@ -422,6 +871,11 @@ ALTER TABLE `tbl_verifikasi`
 --
 ALTER TABLE `tbl_web`
   MODIFY `id_web` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Database: `test`
+--
+CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `test`;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -73,10 +73,23 @@ $user = $user; ?>
                     <td><?php echo $user->status_keluarga; ?></td>
                   </tr>
                   <tr>
+                    <th>Anak ke</th>
+                    <th>:</th>
+                    <td><?php echo $user->anak_ke; ?></td>
+                  </tr>
+                  <tr>
+                  <tr>
+                    <th>Jumlah Sodara</th>
+                    <th>:</th>
+                    <td><?php echo $user->jml_saudara; ?></td>
+                  </tr>
                     <th>Alamat</th>
                     <th>:</th>
                     <td><?php echo $user->alamat_siswa; ?> , <?php echo $user->desa; ?> <?php echo $user->kec; ?> <?php echo $user->kab; ?> <?php echo $user->kode_pos; ?></td>
                   </tr>
+                 
+            
+                  
                   <tr>
                     <th>No. Handphone</th>
                     <th>:</th>
@@ -92,7 +105,7 @@ $user = $user; ?>
         <div class="panel panel-flat">
           <div class="panel-body">
             <center>
-              <img src="img/logo.png" alt="<?php echo $user->nama_lengkap; ?>" class="" width="176">
+              <img src="img/faviconn.png" alt="<?php echo $user->nama_lengkap; ?>" class="" width="176">
             </center>
             <br>
             <fieldset class="content-group">
@@ -138,6 +151,11 @@ $user = $user; ?>
                     <th>:</th>
                     <td><?php echo $user->penghasilan_ayah; ?></td>
                   </tr>
+                  <tr>
+                    <th>No. Handphone</th>
+                    <th>:</th>
+                    <td><?php echo $user->no_hp_ayah; ?></td>
+                  </tr>
                 </table>
               </div>
             </fieldset>
@@ -176,6 +194,11 @@ $user = $user; ?>
                     <th>Penghasilan</th>
                     <th>:</th>
                     <td><?php echo $user->penghasilan_ibu; ?></td>
+                  </tr>
+                  <tr>
+                    <th>No. Handphone</th>
+                    <th>:</th>
+                    <td><?php echo $user->no_hp_ibu; ?></td>
                   </tr>
                 </table>
               </div>
@@ -232,19 +255,24 @@ $user = $user; ?>
               <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                   <tr>
-                    <th width="30%">Nama Sekolah</th>
+                    <th width="30%">Nama Asal Sekolah</th>
                     <th width="1%">:</th>
                     <td><?php echo $user->nama_sekolah; ?></td>
                   </tr>
                   <tr>
-                    <th width="30%">NPSN Sekolah</th>
+                    <th width="30%">No Peserta Ujian</th>
                     <th width="1%">:</th>
-                    <td><?php echo $user->npsn_sekolah; ?></td>
+                    <td><?php echo $user->no_p_ujian; ?></td>
                   </tr>
                   <tr>
-                    <th>Status Sekolah</th>
+                    <th>No seri Ijaza</th>
                     <th>:</th>
-                    <td><?php echo $user->status_sekolah; ?></td>
+                    <td><?php echo $user->seri_ijaza; ?></td>
+                  </tr>
+                  <tr>
+                    <th>No Seri SKHUS</th>
+                    <th>:</th>
+                    <td><?php echo $user->seri_skhus; ?></td>
                   </tr>
                 </table>
               </div>
@@ -260,6 +288,16 @@ $user = $user; ?>
               <legend class="text-bold"><i class="icon-profile"></i> Informasi Kepemilikan Kartu</legend>
               <div class="table-responsive">
                 <table class="table table-bordered table-striped">
+                <tr>
+                    <th>No Kartu Keluarga</th>
+                    <th>:</th>
+                    <td><?php echo $user->no_kk; ?></td>
+                  </tr>
+                <tr>
+                    <th>No Akte Lahir</th>
+                    <th>:</th>
+                    <td><?php echo $user->no_akte; ?></td>
+                  </tr>
                   <tr>
                     <th width="30%">No. KKS</th>
                     <th width="1%">:</th>
@@ -270,11 +308,7 @@ $user = $user; ?>
                     <th width="1%">:</th>
                     <td><?php echo $user->no_pkh; ?></td>
                   </tr>
-                  <tr>
-                    <th width="30%">No. KIP</th>
-                    <th width="1%">:</th>
-                    <td><?php echo $user->no_kip; ?></td>
-                  </tr>
+                  
                 </table>
               </div>
             </fieldset>

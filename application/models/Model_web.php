@@ -80,6 +80,7 @@ class Model_web extends CI_Model
 					'lokasi_sekolah'	=> $data->post('lokasi_sekolah'),
 					'no_akte'			=> $data->post('no_akte'),
 					'no_hp_ayah'		=> $data->post('no_hp_ayah'),
+					'no_hp_ibu'			=> $data->post('no_hp_ibu'),
 					'no_p_ujian'		=> $data->post('no_p_ujian'),
 					'seri_ijaza'		=> $data->post('seri_ijaza'),
 					'seri_skhus'		=> $data->post('seri_skhus'),
